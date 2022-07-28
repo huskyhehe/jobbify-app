@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useAppContext } from '../context/appContext';
 import logo from '../assets/images/logo.svg';
 import FormRow from '../components/FormRow';
 import Alert from '../components/Alert';
@@ -9,12 +10,12 @@ const initialState = {
     email: '',
     password: '',
     isMember: true,
-    showAlert: true
 }
 
 function Register() {
 
     const [values, setValues] = useState(initialState);
+    const { isLoading, showAlert, displayAlert } = useAppContext();
 
     const toggleMember = () => {
         setValues({ ...values, isMember: !values.isMember })
@@ -26,7 +27,11 @@ function Register() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target);
+        const { name, email, password, isMember } = values;
+        if (!email || !password || (!isMember && !name)) {
+            displayAlert();
+            return;
+        }
     };
 
     return(
@@ -34,7 +39,7 @@ function Register() {
             <form className='form' onSubmit={onSubmit}>
                 <img src={logo} alt="jobbify" className="logo" />
                 <h3>{values.isMember ? 'Login' : 'Register'}</h3>
-                {values.showAlert && <Alert />}
+                {showAlert && <Alert />}
 
                 {!values.isMember && (
                     <FormRow
@@ -58,6 +63,14 @@ function Register() {
                     value={values.password}
                     handleChange={handleChange}
                 />
+
+                <button 
+                    type='submit' 
+                    className='btn btn-block' 
+                    disabled={isLoading}
+                >
+                    Submit
+                </button>
         
                 <p>
                     {values.isMember ? 'Not a member yet? ' : 'Already a member? '}
