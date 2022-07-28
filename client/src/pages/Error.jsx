@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import notFound from '../assets/images/not-found.svg';
-import Wrapper from '../assets/styles/ErrorWrapper';
+import Wrapper from '../assets/styles/PageError';
 
 function Error() {
     return (

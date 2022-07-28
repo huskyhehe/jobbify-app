@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Wrapper from '../assets/styles/LandingWrapper';
+import Wrapper from '../assets/styles/PageLanding';
 import logo from '../assets/images/logo.svg';
 import hero from '../assets/images/hero.svg';
 
