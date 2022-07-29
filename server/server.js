@@ -1,8 +1,10 @@
 import express from "express";
 
 // dotenv
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 dotenv.config();
+
+import "express-async-errors";
 
 // db
 import connectDb from "./db/conn.js";
