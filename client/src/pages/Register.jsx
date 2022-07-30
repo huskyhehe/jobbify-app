@@ -10,20 +10,20 @@ const initialState = {
     email: '',
     password: '',
     isMember: true,
-}
+};
 
 function Register() {
 
     const [values, setValues] = useState(initialState);
-    const { isLoading, showAlert, displayAlert } = useAppContext();
+    const { isLoading, showAlert, displayAlert, registerUser } = useAppContext();    
 
     const toggleMember = () => {
-        setValues({ ...values, isMember: !values.isMember })
+        setValues({ ...values, isMember: !values.isMember });
     };
 
     const handleChange = (e) => {
-        setValues({ ...values, [e.target.name]: e.target.value })
-    }
+        setValues({ ...values, [e.target.name]: e.target.value });
+    };
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -31,6 +31,12 @@ function Register() {
         if (!email || !password || (!isMember && !name)) {
             displayAlert();
             return;
+        };
+        const currentUser = { name, email, password };
+        if (isMember) {
+            console.log('already a user');
+        } else {
+            registerUser(currentUser);
         }
     };
 
