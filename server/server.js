@@ -6,6 +6,9 @@ dotenv.config();
 
 import "express-async-errors";
 
+// morgan
+import morgan from "morgan";
+
 // cors
 import cors from "cors";
 
@@ -19,7 +22,6 @@ import jobsRouter from "./routes/jobsRoutes.js";
 // middleware
 import errorHandlerMiddleware from "./middleware/error-handler.js";
 import notFoundMiddleware from "./middleware/not-found.js";
-
 
 const app = express();
 const port = process.env.PORT || 5000;

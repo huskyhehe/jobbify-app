@@ -1,28 +1,29 @@
-import { useState } from 'react';
-import { useAppContext } from '../context/appContext';
-import logo from '../assets/images/logo.svg';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FormRow from '../components/FormRow';
 import Alert from '../components/Alert';
+import { useAppContext } from '../context/appContext';
 import Wrapper from '../assets/styles/PageRegister';
 
 const initialState = {
     name: '',
     email: '',
     password: '',
-    isMember: true,
+    isMember: true
 };
 
 function Register() {
 
+    const navigate = useNavigate();
     const [values, setValues] = useState(initialState);
-    const { isLoading, showAlert, displayAlert, registerUser } = useAppContext();    
+    const { user, isLoading, showAlert, displayAlert, loginUser, registerUser } = useAppContext();
 
     const toggleMember = () => {
-        setValues({ ...values, isMember: !values.isMember });
+        setValues({ ...values, isMember: !values.isMember })
     };
 
     const handleChange = (e) => {
-        setValues({ ...values, [e.target.name]: e.target.value });
+        setValues({ ...values, [e.target.name]: e.target.value })
     };
 
     const onSubmit = (e) => {
@@ -34,16 +35,24 @@ function Register() {
         };
         const currentUser = { name, email, password };
         if (isMember) {
-            console.log('already a user');
+            loginUser(currentUser);
         } else {
             registerUser(currentUser);
-        }
+        };
     };
+
+    useEffect(() => {
+        if (user) {
+            setTimeout(() => {
+                navigate('/')
+            }, 3000);
+        }
+    }, [user, navigate]);
+
 
     return(
         <Wrapper className='full-page'>
             <form className='form' onSubmit={onSubmit}>
-                <img src={logo} alt="jobbify" className="logo" />
                 <h3>{values.isMember ? 'Login' : 'Register'}</h3>
                 {showAlert && <Alert />}
 
@@ -55,7 +64,7 @@ function Register() {
                         handleChange={handleChange}
                     />
                 )}
-        
+
                 <FormRow
                     type='email'
                     name='email'
@@ -77,7 +86,7 @@ function Register() {
                 >
                     Submit
                 </button>
-        
+
                 <p>
                     {values.isMember ? 'Not a member yet? ' : 'Already a member? '}
                     <button 

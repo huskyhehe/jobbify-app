@@ -22,11 +22,31 @@ export const register = async (req, res) => {
             email: user.email,
             location: user.location,    
         }, 
-        token });
+        token,
+        location: user.location
+    });
 };
 
 export const login = async (req, res) => {
-    res.send('login user');
+    const { email, password } = req.body;
+    // checkout whether form is filled
+    if (!email || !password) {
+        throw new BadRequestError('Please provide all values');
+    };
+    // check whether user exists
+    const user = await User.findOne({ email }).select('+password');
+    if (!user) {
+        throw new UnAuthenticatedError('Invalid Credentials')
+    };
+    // check whether password is correct
+    const isPasswordCorrect = await user.comparePassword(password);
+    if (!isPasswordCorrect) {
+        throw new UnAuthenticatedError('Invalid Credentials')
+    };
+
+    const token = user.createJWT();
+    user.password = undefined;
+    res.status(StatusCodes.OK).json({ user, token, location: user.location });
 };
 
 export const updateUser = async (req, res) => {
