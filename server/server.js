@@ -26,7 +26,7 @@ import notFoundMiddleware from "./middleware/not-found.js";
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors);
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -42,9 +42,11 @@ app.use('/api/v1/jobs', jobsRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
+const uri = process.env.ATLAS_URI;
+
 const start = async() => {
     try {
-        await connectDb(process.env.ATLAS_URI);
+        await connectDb(uri);
         app.listen(port, () => {
             console.log(`Server is listening on port ${port}.`);
         });
