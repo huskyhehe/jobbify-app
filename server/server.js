@@ -40,9 +40,11 @@ app.use('/api/v1/jobs', jobsRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
+const uri = process.env.ATLAS_URI;
+
 const start = async() => {
     try {
-        await connectDb(process.env.ATLAS_URI);
+        await connectDb(uri);
         app.listen(port, () => {
             console.log(`Server is listening on port ${port}.`);
         });
