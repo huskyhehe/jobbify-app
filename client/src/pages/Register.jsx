@@ -50,6 +50,7 @@ function Register() {
     };
 
     useEffect(() => {
+        console.log(user);
         if (user) {
             setTimeout(() => {
                 navigate('/')
@@ -58,7 +59,7 @@ function Register() {
     }, [user, navigate]);
 
 
-    return(
+    return (
         <Wrapper className='full-page'>
             <form className='form' onSubmit={onSubmit}>
                 <h3>{values.isMember ? 'Login' : 'Register'}</h3>
