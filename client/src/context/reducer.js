@@ -1,10 +1,13 @@
+import { initialState } from './appContext';
 import { 
     CLEAR_ALERT, 
     DISPLAY_ALERT, 
     SETUP_USER_BEGIN,
     SETUP_USER_SUCCESS,
     SETUP_USER_ERROR, 
-    TOGGLE_SIDEBAR} from './actions';
+    LOGOUT_USER,
+    TOGGLE_SIDEBAR,
+    } from './actions';
 
 const reducer = (state, action) => {
     switch(action.type) {
@@ -52,6 +55,14 @@ const reducer = (state, action) => {
                 alertText: action.payload.msg,
             };
         
+        case LOGOUT_USER:
+            return {
+                ...initialState,
+                user: null,
+                token: null,
+                jobLocation: '',
+                userLocation: '',    
+            };
 
         case TOGGLE_SIDEBAR:
             return { 

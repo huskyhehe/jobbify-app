@@ -7,6 +7,7 @@ import {
     SETUP_USER_BEGIN,
     SETUP_USER_SUCCESS,
     SETUP_USER_ERROR,
+    LOGOUT_USER,
 
     TOGGLE_SIDEBAR } from './actions';
 
@@ -78,8 +79,13 @@ export const AppProvider = ({ children }) => {
         clearAlert();
     };
 
+    const logoutUser = () => {
+        dispatch({ type: LOGOUT_USER });
+        removeUserFromLocalStorage();
+    };
+
     const toggleSidebar = () => {
-        dispatch({ type: TOGGLE_SIDEBAR })
+        dispatch({ type: TOGGLE_SIDEBAR });
     };
     
     return (
@@ -88,6 +94,7 @@ export const AppProvider = ({ children }) => {
                 ...state,
                 displayAlert,
                 setupUser,
+                logoutUser,
                 toggleSidebar,
             }}
         >
