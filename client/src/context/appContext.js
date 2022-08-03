@@ -6,7 +6,9 @@ import {
     CLEAR_ALERT, 
     SETUP_USER_BEGIN,
     SETUP_USER_SUCCESS,
-    SETUP_USER_ERROR } from './actions';
+    SETUP_USER_ERROR,
+
+    TOGGLE_SIDEBAR } from './actions';
 
 const token = localStorage.getItem('token');
 const user = localStorage.getItem('user');
@@ -21,6 +23,8 @@ export const initialState = {
     token: token,
     userLocation: userLocation || '',
     jobLocation: userLocation || '',
+
+    showSidebar: false,
 };
 
 const AppContext = React.createContext();
@@ -73,6 +77,10 @@ export const AppProvider = ({ children }) => {
         };
         clearAlert();
     };
+
+    const toggleSidebar = () => {
+        dispatch({ type: TOGGLE_SIDEBAR })
+    };
     
     return (
         <AppContext.Provider
@@ -80,6 +88,7 @@ export const AppProvider = ({ children }) => {
                 ...state,
                 displayAlert,
                 setupUser,
+                toggleSidebar,
             }}
         >
             {children}
