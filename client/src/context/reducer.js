@@ -6,6 +6,9 @@ import {
     SETUP_USER_SUCCESS,
     SETUP_USER_ERROR, 
     LOGOUT_USER,
+    UPDATE_USER_BEGIN,
+    UPDATE_USER_SUCCESS,
+    UPDATE_USER_ERROR,
     TOGGLE_SIDEBAR,
     } from './actions';
 
@@ -43,7 +46,7 @@ const reducer = (state, action) => {
                 jobLocation: action.payload.location,
                 showAlert: true,
                 alertType: 'success',
-                alertText: action.payload.alertText,
+                alertText: action.payload.alertText
             };
 
         case SETUP_USER_ERROR:
@@ -52,7 +55,7 @@ const reducer = (state, action) => {
                 isLoading: false,
                 showAlert: true,
                 alertType: 'danger',
-                alertText: action.payload.msg,
+                alertText: action.payload.msg
             };
         
         case LOGOUT_USER:
@@ -61,9 +64,38 @@ const reducer = (state, action) => {
                 user: null,
                 token: null,
                 jobLocation: '',
-                userLocation: '',    
+                userLocation: ''  
+            };
+        
+
+        case UPDATE_USER_BEGIN:
+            return {
+                ...state, 
+                isLoading: true
+            };
+        
+        case UPDATE_USER_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                token: action.payload.token,
+                user: action.payload.user,
+                userLocation: action.payload.location,
+                jobLocation: action.payload.location,
+                showAlert: true,
+                alertType: 'success',
+                alertText: 'User Profile Updated!'
             };
 
+        case UPDATE_USER_ERROR:
+            return {
+                ...state,
+                isLoading: false,
+                showAlert: true,
+                alertType: 'danger',
+                alertText: action.payload.msg
+            };        
+        
         case TOGGLE_SIDEBAR:
             return { 
                 ...state, 
