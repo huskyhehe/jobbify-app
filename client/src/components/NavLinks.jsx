@@ -12,9 +12,7 @@ function NavLinks({ toggleSidebar }) {
                         to={path}
                         key={id}
                         onClick={toggleSidebar}
-                        className={({ isActive }) =>
-                        isActive ? 'nav-link active' : 'nav-link'
-                        }
+                        className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
                     >
                         <span className='icon'>{icon}</span>
                         {text}
