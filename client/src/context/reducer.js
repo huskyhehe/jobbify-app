@@ -3,7 +3,8 @@ import {
     DISPLAY_ALERT, 
     SETUP_USER_BEGIN,
     SETUP_USER_SUCCESS,
-    SETUP_USER_ERROR } from './actions';
+    SETUP_USER_ERROR, 
+    TOGGLE_SIDEBAR} from './actions';
 
 const reducer = (state, action) => {
     switch(action.type) {
@@ -49,6 +50,13 @@ const reducer = (state, action) => {
                 showAlert: true,
                 alertType: 'danger',
                 alertText: action.payload.msg,
+            };
+        
+
+        case TOGGLE_SIDEBAR:
+            return { 
+                ...state, 
+                showSidebar: !state.showSidebar 
             };
 
         default:
