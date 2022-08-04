@@ -11,7 +11,10 @@ import {
     UPDATE_USER_BEGIN,
     UPDATE_USER_SUCCESS,
     UPDATE_USER_ERROR,
-    TOGGLE_SIDEBAR } from './actions';
+    HANDLE_CHANGE,
+    CLEAR_VALUES, 
+    TOGGLE_SIDEBAR,
+    } from './actions';
 
 const token = localStorage.getItem('token');
 const user = localStorage.getItem('user');
@@ -22,9 +25,19 @@ export const initialState = {
     showAlert: false,
     alertText: '',
     alertType: '',
+
     user: user ? JSON.parse(user) : null,
     token: token,
     userLocation: userLocation || '',
+
+    jobId: '',
+    isEditing: false,
+    company: '',
+    position: '',
+    jobTypeOptions: ['full-time', 'part-time', 'internship'],
+    jobType: 'full-time',
+    statusOptions: ['interview', 'declined', 'pending'],
+    status: 'pending',
     jobLocation: userLocation || '',
 
     showSidebar: false,
@@ -132,6 +145,14 @@ export const AppProvider = ({ children }) => {
         clearAlert();
     }
 
+    const handleChange = ({ name, value }) => {
+        dispatch({ type: HANDLE_CHANGE, payload: { name, value } })
+    };
+
+    const clearValues = () => {
+        dispatch({ type: CLEAR_VALUES });
+    };
+
     const toggleSidebar = () => {
         dispatch({ type: TOGGLE_SIDEBAR });
     };
@@ -144,6 +165,8 @@ export const AppProvider = ({ children }) => {
                 setupUser,
                 logoutUser,
                 updateUser,
+                handleChange,
+                clearValues,
                 toggleSidebar,
             }}
         >
