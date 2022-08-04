@@ -17,6 +17,8 @@ import {
     CREATE_JOB_BEGIN,
     CREATE_JOB_SUCCESS,
     CREATE_JOB_ERROR,
+    GET_JOBS_BEGIN,
+    GET_JOBS_SUCCESS,
     } from './actions';
 
 const token = localStorage.getItem('token');
@@ -42,6 +44,11 @@ export const initialState = {
     statusOptions: ['interview', 'declined', 'pending'],
     status: 'pending',
     jobLocation: userLocation || '',
+
+    jobs: [],
+    totalJobs: 0,
+    numOfPages: 1,
+    page: 1,
 
     showSidebar: false,
 };
@@ -91,6 +98,7 @@ export const AppProvider = ({ children }) => {
         }, 3000)
     };
 
+
     const addUserToLocalStorage = ({ user, token, location }) => {
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('token', token);
@@ -102,6 +110,7 @@ export const AppProvider = ({ children }) => {
         localStorage.removeItem('user');
         localStorage.removeItem('location');
     };
+
 
     const setupUser = async ({ currentUser, endPoint, alertText }) => {
         dispatch({ type: SETUP_USER_BEGIN });
@@ -146,7 +155,11 @@ export const AppProvider = ({ children }) => {
             }
         }
         clearAlert();
-    }
+    };
+
+    const toggleSidebar = () => {
+        dispatch({ type: TOGGLE_SIDEBAR });
+    };
 
     const handleChange = ({ name, value }) => {
         dispatch({ type: HANDLE_CHANGE, payload: { name, value } })
@@ -156,8 +169,9 @@ export const AppProvider = ({ children }) => {
         dispatch({ type: CLEAR_VALUES });
     };
 
+
     const createJob = async () => {
-        dispatch({ type: CREATE_JOB_BEGIN })
+        dispatch({ type: CREATE_JOB_BEGIN });
         try {
             const { position, company, jobLocation, jobType, status } = state;
     
@@ -183,22 +197,44 @@ export const AppProvider = ({ children }) => {
         clearAlert();
     };
 
-    const toggleSidebar = () => {
-        dispatch({ type: TOGGLE_SIDEBAR });
+    const getJobs = async () => {
+        let url = `/jobs`;
+      
+        dispatch({ type: GET_JOBS_BEGIN });
+        try {
+            const { data } = await authFetch(url);
+            const { jobs, totalJobs, numOfPages } = data;
+            dispatch({
+                type: GET_JOBS_SUCCESS,
+                payload: {
+                jobs,
+                totalJobs,
+                numOfPages,
+                },
+            });
+        } catch (error) {
+            logoutUser();
+        };
+        clearAlert();
     };
+
     
     return (
         <AppContext.Provider
             value={{
                 ...state,
                 displayAlert,
+
                 setupUser,
                 logoutUser,
                 updateUser,
+
+                toggleSidebar,
                 handleChange,
                 clearValues,
+
                 createJob,
-                toggleSidebar,
+                getJobs,
             }}
         >
             {children}
