@@ -15,16 +15,19 @@ export const createJob = async (req, res) => {
     res.status(StatusCodes.CREATED).json({ job });
 };
 
+export const getAllJobs = async (req, res) => {
+    const jobs = await Job.find({ createdBy: req.user.userId });
+    res
+      .status(StatusCodes.OK)
+      .json({ jobs, totalJobs: jobs.length, numOfPages: 1 });
+};
+
 export const deleteJob = (req, res) => {
     res.send('delete job');
 };
 
 export const updateJob = (req, res) => {
     res.send('update jobs');
-};
-
-export const getAllJobs = (req, res) => {
-    res.send('get all jobs');
 };
 
 export const showStats = (req, res) => {

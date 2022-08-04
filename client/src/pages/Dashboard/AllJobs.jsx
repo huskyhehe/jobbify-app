@@ -1,6 +1,10 @@
+import JobsContainer from "../../components/JobsContainer";
+
 function AllJobs() {
     return ( 
-        <h1>All Job</h1>
+        <>
+            <JobsContainer />
+        </>
     );
 }
 
