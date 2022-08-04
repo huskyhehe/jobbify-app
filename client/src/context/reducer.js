@@ -12,6 +12,9 @@ import {
     HANDLE_CHANGE,
     TOGGLE_SIDEBAR,
     CLEAR_VALUES,
+    CREATE_JOB_BEGIN,
+    CREATE_JOB_SUCCESS,
+    CREATE_JOB_ERROR,
     } from './actions';
 
 const reducer = (state, action) => {
@@ -121,6 +124,30 @@ const reducer = (state, action) => {
             return { 
                 ...state, 
                 showSidebar: !state.showSidebar 
+            };
+        
+        case CREATE_JOB_BEGIN:
+            return {
+                ...state, 
+                isLoading: true
+            };
+        
+        case CREATE_JOB_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                showAlert: true,
+                alertType: 'success',
+                alertText: 'New Job Created!'         
+            };
+        
+        case CREATE_JOB_ERROR:
+            return {
+                ...state,
+                isLoading: false,
+                showAlert: true,
+                alertType: 'danger',
+                alertText: action.payload.msg        
             };
 
         default:
