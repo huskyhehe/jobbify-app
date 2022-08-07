@@ -24,11 +24,6 @@ export const getAllJobs = async (req, res) => {
 };
 
 
-export const deleteJob = (req, res) => {
-    res.send('delete job');
-};
-
-
 export const updateJob = async (req, res) => {
     const { id: jobId } = req.params;
     const { company, position } = req.body;
@@ -51,6 +46,22 @@ export const updateJob = async (req, res) => {
   
     res.status(StatusCodes.OK).json({ updatedJob });
 };
+
+
+export const deleteJob = async (req, res) => {
+    const { id: jobId } = req.params;
+  
+    const job = await Job.findOne({ _id: jobId });  
+    if (!job) {
+      throw new NotFoundError(`No job with id :${jobId}`);
+    };
+  
+    checkPermissions(req.user, job.createdBy);
+     
+    await job.remove();
+  
+    res.status(StatusCodes.OK).json({ msg: 'Success! Job removed' });
+}
 
 
 export const showStats = (req, res) => {

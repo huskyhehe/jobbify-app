@@ -21,6 +21,7 @@ import {
     EDIT_JOB_BEGIN,
     EDIT_JOB_SUCCESS,
     EDIT_JOB_ERROR,
+    DELETE_JOB_BEGIN,
     } from './actions';
 
 const reducer = (state, action) => {
@@ -209,7 +210,12 @@ const reducer = (state, action) => {
                 alertType: 'danger',
                 alertText: action.payload.msg,
             };
-
+        
+        case DELETE_JOB_BEGIN:
+            return { 
+                ...state, 
+                isLoading: true 
+            };
 
         default:
             throw new Error(`no such action : ${action.type}`);
