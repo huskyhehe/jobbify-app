@@ -58,6 +58,8 @@ export const initialState = {
     page: 1,
 
     showSidebar: false,
+
+    stats: {},
 };
 
 const AppContext = React.createContext();
