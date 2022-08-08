@@ -20,10 +20,38 @@ export const createJob = async (req, res) => {
 };
 
 export const getAllJobs = async (req, res) => {
-    const jobs = await Job.find({ createdBy: req.user.userId });
-    res
-      .status(StatusCodes.OK)
-      .json({ jobs, totalJobs: jobs.length, numOfPages: 1 });
+    // const jobs = await Job.find({ createdBy: req.user.userId });
+    // res
+    //   .status(StatusCodes.OK)
+    //   .json({ jobs, totalJobs: jobs.length, numOfPages: 1 });
+
+    const { status, jobType, sort, search } = req.query;
+    const queryObject = { createdBy: req.user.userId };
+
+    if (status && status !== 'all') {
+        queryObject.status = status;
+    };
+
+    if (jobType && jobType !== 'all') {
+        queryObject.jobType = jobType
+    };
+
+    if (search) {
+        queryObject.position = { $regex: search, $options: 'i' }
+    };
+
+
+    let result = Job.find(queryObject);
+    
+    if (sort === 'latest') result = result.sort({ 'createdAt': -1 });
+    if (sort === 'oldest') result = result.sort({ 'createdAt': 1 });
+    if (sort === 'a-z') result = result.sort({ 'createdAt': 1 });
+    if (sort === 'z-a') result = result.sort({ 'position': -1 });
+
+    const jobs = await result;
+    const totalJobs = await Job.countDocuments(queryObject);
+    res.status(StatusCodes.OK).json({ jobs, totalJobs, numOfPages: 1 });
+
 };
 
 
