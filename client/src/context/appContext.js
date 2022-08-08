@@ -60,6 +60,7 @@ export const initialState = {
     showSidebar: false,
 
     stats: {},
+    monthlyApplications: [],
 };
 
 const AppContext = React.createContext();
