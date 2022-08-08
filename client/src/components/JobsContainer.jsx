@@ -5,11 +5,20 @@ import Wrapper from "../assets/styles/JobsContainer";
 
 
 function JobsContainer() {
-    const { getJobs, jobs, isLoading, totalJobs } = useAppContext();
+    const { 
+        getJobs, 
+        jobs, 
+        isLoading, 
+        totalJobs,
+        search,
+        searchStatus,
+        searchType,
+        sort 
+    } = useAppContext();
 
     useEffect(() => {
         getJobs()
-      }, []);
+      }, [search, searchStatus, searchType, sort]);
 
     if (isLoading) {
         return <div className='loading loading-center'></div>
