@@ -42,15 +42,24 @@ export const getAllJobs = async (req, res) => {
 
 
     let result = Job.find(queryObject);
-    
+
     if (sort === 'latest') result = result.sort({ 'createdAt': -1 });
     if (sort === 'oldest') result = result.sort({ 'createdAt': 1 });
     if (sort === 'a-z') result = result.sort({ 'createdAt': 1 });
     if (sort === 'z-a') result = result.sort({ 'position': -1 });
 
+
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+
+    result = result.skip(skip).limit(limit);
+
     const jobs = await result;
     const totalJobs = await Job.countDocuments(queryObject);
-    res.status(StatusCodes.OK).json({ jobs, totalJobs, numOfPages: 1 });
+    const numOfPages = Math.ceil(totalJobs / limit);
+
+    res.status(StatusCodes.OK).json({ jobs, totalJobs, numOfPages });
 
 };
 
