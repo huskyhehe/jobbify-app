@@ -48,7 +48,7 @@ export const getAllJobs = async (req, res) => {
     if (sort === 'a-z') result = result.sort({ 'createdAt': 1 });
     if (sort === 'z-a') result = result.sort({ 'position': -1 });
 
-
+    // pagination
     const page = Number(req.query.page) || 1;
     const limit = Number(req.query.limit) || 10;
     const skip = (page - 1) * limit;
