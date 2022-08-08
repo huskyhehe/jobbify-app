@@ -26,6 +26,7 @@ import {
     DELETE_JOB_BEGIN,
     SHOW_STATS_BEGIN,
     SHOW_STATS_SUCCESS,
+    CLEAR_FILTERS,
     } from './actions';
 
 const token = localStorage.getItem('token');
@@ -61,6 +62,12 @@ export const initialState = {
 
     stats: {},
     monthlyApplications: [],
+
+    search: '',
+    searchStatus: 'all',
+    searchType: 'all',
+    sort: 'latest',
+    sortOptions: ['latest', 'oldest', 'a-z', 'z-a']
 };
 
 const AppContext = React.createContext();
@@ -208,8 +215,12 @@ export const AppProvider = ({ children }) => {
     };
 
     const getJobs = async () => {
-        let url = `/jobs`;
-      
+        const { page, search, searchStatus, searchType, sort } = state;
+    
+        let url = `/jobs?page=${page}&status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
+        if (search) {
+            url = url + `&search=${search}`
+        };
         dispatch({ type: GET_JOBS_BEGIN });
         try {
             const { data } = await authFetch(url);
@@ -224,10 +235,9 @@ export const AppProvider = ({ children }) => {
             });
         } catch (error) {
             logoutUser();
-        };
+        }
         clearAlert();
     };
-
 
     const setEditJob = (id) => {
         dispatch({ type: SET_EDIT_JOB, payload: { id } });
@@ -284,6 +294,11 @@ export const AppProvider = ({ children }) => {
         clearAlert();
     };
 
+
+    const clearFilters = () => {
+        dispatch({ type: CLEAR_FILTERS });
+    };
+
     
     return (
         <AppContext.Provider
@@ -307,6 +322,8 @@ export const AppProvider = ({ children }) => {
                 deleteJob,
 
                 showStats,
+
+                clearFilters,
             }}
         >
             {children}
