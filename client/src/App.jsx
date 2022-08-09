@@ -14,7 +14,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route
-                    path='/'
+                    path='/dashboard/'
                     element={
                         <ProtectedRoute>
                             <SharedLayout />
@@ -27,7 +27,7 @@ function App() {
                     <Route path='profile' element={<Profile />} />
                 </Route>
                 <Route path='/register' element={<Register />} />
-                <Route path='/landing' element={<Landing />} />
+                <Route path='/' element={<Landing />} />
                 <Route path='*' element={<Error />} />
             </Routes>
         </BrowserRouter>
