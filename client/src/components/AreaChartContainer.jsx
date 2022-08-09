@@ -13,9 +13,7 @@ function AreaChartContainer({ data }) {
         <ResponsiveContainer width='100%' height={300}>
             <AreaChart
                 data={data}
-                margin={{
-                top: 50,
-                }}
+                margin={{top: 50}}
             >
                 <CartesianGrid strokeDasharray='3 3' />
                 <XAxis dataKey='date' />

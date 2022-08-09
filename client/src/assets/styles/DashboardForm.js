@@ -47,20 +47,20 @@ const Wrapper = styled.section`
     }
     @media (min-width: 992px) {
         .form-center {
-        grid-template-columns: 1fr 1fr;
-        align-items: center;
-        column-gap: 1rem;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            column-gap: 1rem;
         }
         .btn-container {
-        margin-top: 0;
+            margin-top: 0;
         }
     }
     @media (min-width: 1120px) {
         .form-center {
-        grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
         }
         .form-center button {
-        margin-top: 0;
+            margin-top: 0;
         }
     }
 `

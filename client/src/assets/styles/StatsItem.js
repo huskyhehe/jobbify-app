@@ -33,7 +33,7 @@ const Wrapper = styled.article`
         justify-content: center;
         svg {
         font-size: 2rem;
-        color: ${(props) => props.color};
+            color: ${(props) => props.color};
         }
     }
 `
