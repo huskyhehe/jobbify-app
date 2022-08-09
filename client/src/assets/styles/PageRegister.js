@@ -3,11 +3,6 @@ import styled from 'styled-components';
 const Wrapper = styled.section`
     display: grid;
     align-items: center;
-    .logo {
-        display: block;
-        margin: 0 auto;
-        margin-bottom: 1.38rem;
-    }
     .form {
         max-width: 400px;
         border-top: 5px solid var(--primary-500);
@@ -30,5 +25,30 @@ const Wrapper = styled.section`
         cursor: pointer;
         letter-spacing: var(--letterSpacing);
     }
+    .test-account {
+        margin: auto;
+        margin-top: 0;
+        line-height: 1rem;
+    }
+    .account-entry {
+        display: flex;
+        gap: .5rem;
+    }
+    .account-title,
+    .account-label {
+        font-weight: bold;
+    }
+    .account-label,
+    .account-content {
+        display: flex;
+        flex-direction: column;
+    }
+    .account-label {
+        align-items: end;
+    }
+    .account-content {
+        align-items: start;
+    }
+
 `
 export default Wrapper;

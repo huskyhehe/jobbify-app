@@ -9,7 +9,7 @@
     </clipPath>
   </defs>
   <g id="logo" clip-path="url(#clip-logo)">
-    <text id="Jobiify" transform="translate(65 7)" fill="#38bec9" font-size="30" font-family="Cascadia Mono" font-weight="700" letter-spacing="-0.05em"><tspan x="0" y="28">Job</tspan><tspan y="28" fill="#54d1db">i</tspan><tspan y="28" fill="#14919b">i</tspan><tspan y="28">fy</tspan></text>
+    <text id="Jobbify" transform="translate(65 7)" fill="#38bec9" font-size="30" font-family="Cascadia Mono" font-weight="700" letter-spacing="-0.05em"><tspan x="0" y="28">Job</tspan><tspan y="28" fill="#54d1db">b</tspan><tspan y="28" fill="#14919b">i</tspan><tspan y="28">fy</tspan></text>
     <circle id="椭圆_3" data-name="椭圆 3" cx="25" cy="25" r="25" fill="url(#linear-gradient)"/>
     <text id="J" transform="translate(4 40)" fill="#fff" font-size="39" font-family="SegoeScript, Segoe Script"><tspan x="0" y="0">J</tspan></text>
   </g>

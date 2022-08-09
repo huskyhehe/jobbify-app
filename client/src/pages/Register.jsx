@@ -106,6 +106,20 @@ function Register() {
                     </button>
                 </p>
             </form>
+
+            <div className="test-account">
+                <p className="account-title">Test Account</p>
+                <div className="account-entry">
+                    <div className="account-label">
+                        <p>Email:</p>
+                        <p>Password:</p>
+                    </div>
+                    <div className="account-content">
+                        <p>test@gmail.com</p>
+                        <p>secret</p>
+                    </div>
+                </div>
+            </div>
         </Wrapper>
     );
 };
