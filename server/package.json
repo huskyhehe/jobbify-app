@@ -5,13 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "install-server": "npm install",
-    "install-client": "cd ../client/ && npm install",
-    "install-dependencies": " npm run install-client && npm run install-server ",
-    "heroku-postbuild": "npm run install-client && npm run build-client",
-    "build-client": "cd ../client/ && npm run build",
-    "server": "nodemon server --ignore ../client/",
-    "client": "npm start --prefix ../client/",
+    "server": "nodemon server --ignore ../client",
+    "client": "npm start --prefix ../client",
     "start": "concurrently --kill-others-on-fail \" npm run server\" \" npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
