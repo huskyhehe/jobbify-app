@@ -43,6 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "/landing",
   "proxy": "http://localhost:5000"
 }
