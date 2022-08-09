@@ -10,7 +10,7 @@ const Wrapper = styled.div`
         display: flex;
         align-items: center;
         svg {
-        color: var(--grey-400);
+            color: var(--grey-400);
         }
     }
     .text {

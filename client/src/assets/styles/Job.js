@@ -31,13 +31,13 @@ const Wrapper = styled.article`
     }
     .info {
         h5 {
-        margin-bottom: 0.25rem;
+            margin-bottom: 0.25rem;
         }
         p {
-        margin: 0;
-        text-transform: capitalize;
-        color: var(--grey-400);
-        letter-spacing: var(--letterSpacing);
+            margin: 0;
+            text-transform: capitalize;
+            color: var(--grey-400);
+            letter-spacing: var(--letterSpacing);
         }
     }
     .pending {
@@ -60,13 +60,13 @@ const Wrapper = styled.article`
         grid-template-columns: 1fr;
         row-gap: 0.5rem;
         @media (min-width: 576px) {
-        grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
         }
         @media (min-width: 992px) {
-        grid-template-columns: 1fr;
+            grid-template-columns: 1fr;
         }
         @media (min-width: 1120px) {
-        grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
         }
     }
     .status {

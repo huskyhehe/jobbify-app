@@ -9,7 +9,7 @@ const Wrapper = styled.nav`
     .logo {
         display: flex;
         align-items: center;
-        width: 100px;
+        max-width: 30vw;
     }
     .nav-center {
         display: flex;
@@ -69,13 +69,13 @@ const Wrapper = styled.nav`
         position: sticky;
         top: 0;
         .nav-center {
-        width: 90%;
+            width: 90%;
         }
         .logo {
-        display: none;
+            display: none;
         }
         .logo-text {
-        display: block;
+            display: block;
         }
     }
 `
