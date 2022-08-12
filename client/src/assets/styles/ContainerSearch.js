@@ -28,15 +28,15 @@ const Wrapper = styled.section`
     }
     @media (min-width: 768px) {
         .form-center {
-        grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
         }
     }
     @media (min-width: 992px) {
         .form-center {
-        grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
         }
         .btn-block {
-        margin-top: 0;
+            margin-top: 0;
         }
     }
 `
