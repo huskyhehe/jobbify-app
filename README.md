@@ -1,8 +1,8 @@
-# <img src = "https://raw.githubusercontent.com/huskyhehe/jobbify-app/5675b256cd631ab3e69b93e664fae472e7de125d/client/src/assets/images/logo.svg">
+# Jobbify - job application tracking dashboard
 > Full-stack Job tracking app created with MERN stack.
 > <br/>**Live demo** here: https://jobbify-prod.herokuapp.com/.
 
-
+# <img src = "https://raw.githubusercontent.com/huskyhehe/jobbify-app/5675b256cd631ab3e69b93e664fae472e7de125d/client/src/assets/images/logo.svg">
 
 ## Table of Contents
 * [1 General Intro](#1-general-intro)
@@ -79,13 +79,18 @@ Libraries used for client:
 <br/>
 
 # 6 Setup
-Run The App Locally
-step1:
+### Step 1: 
+Clone this repo to your desktop.
+
+### Step 2: 
 ```
 npm run install-dependencies
 ```
-Add a new file `.env`, and setup values for - ATLAS_URI, JWT_SECRET,JWT_LIFETIME
 
+### Step 3:
+Add a new file `.env`, and setup values for  `ATLAS_URI`, `JWT_SECRET`,`JWT_LIFETIME`.
+
+### Step 4:
 Comment lines below in the `./server/server.js`:
 ```javascript
 // only when ready to deploy
@@ -96,8 +101,8 @@ app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'))
 });
 ```
+### Step 5:
 ```
 npm start
 ```
-
 Visit url http://localhost:3000/.
