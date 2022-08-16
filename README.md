@@ -97,11 +97,11 @@ Libraries used for **server**:
 
 <br/>
 
-# 4 Key Features
+## 4 Key Features
 
 <br/>
 
-# 5 Screenshots
+## 5 Screenshots
 
 <br/>
 
@@ -133,4 +133,4 @@ npm start
 Visit url http://localhost:3000/.
 
 
-# 7 Room for Improvement
+## 7 Room for Improvement
