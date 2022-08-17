@@ -8,10 +8,10 @@
 * [1 General Intro](#1-general-intro)
 * [2 File Structure](#2-file-structure)
 * [3 Technologies Used](#3-technologies-used)
-* [4 Key Features](#5-key-features)
-* [5 Screenshots](#6-screenshots)
-* [6 Setup](#7-setup)
-* [7 Room for Improvement](#9-room-for-improvement)
+* [4 Key Features](#4-key-features)
+* [5 Screenshots](#5-screenshots)
+* [6 Setup](#6-setup)
+* [7 Room for Improvement](#7-room-for-improvement)
 
 <br/>
 
@@ -99,13 +99,75 @@ Libraries used for **server**:
 
 ## 4 Key Features
 
+- Create a front-end React application
+- Create a global context using createContext and utilize useContext hook
+- Setup a global state using useReducer hook
+- Create global Alert component
+- Setup MongoDB database in the cloud (Atlas)
+- Create routes and controllers
+- Extensively test in POSTMAN
+- Validate Email
+- Setup error handling in Express
+- Hash passwords
+- Implement JWT for authentication and authorization
+- Connect front-end application with our server
+Utilize "concurrently" package
+
+- Setup "proxy" in create-react-app
+
+- Programmatically navigate using React Router 6
+
+- Persist data in local storage
+
+- Compare passwords
+
+- Setup nested pages and protected route using React Router 6
+
+- Setup create layout using React Router 6
+
+- Implement logout functionality
+
+- Set JWT token in Postman programmatically
+
+- Implement various Axios configurations
+
+- Complete CRUD functionality
+
+- Setup permissions on the server
+
+- Create mock data (Mockaroo) and populate the database.
+
+- Implement search/filter functionality on the server and front-end
+
+- Implement pagination on the server and front-end
+
+- Deploy MERN application to Heroku
+
+What you’ll learn
+Learn how to build big full stack app from scratch
+Learn how to connect Front-End application (React) with Backend application (Express, MongoDB, NodeJS)
+Learn how to implement JWT for authentication and authorization
+Learn how to implement React Hooks, Async/Await, React Router 6, Axios
+Learn how to implement ES6 in Node
+Learn how to deploy MERN app on Heroku
+Learn best practices of Front-End and Server applications
+
+
+
+Creating a Secure REST API in Node.js
+
+Anatomy of a REST API
+
+Creating the Auth Module
+<img src="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes/mvc_express.png">
+
 <br/>
 
 ## 5 Screenshots
 
 <br/>
 
-# 6 Setup
+## 6 Setup
 ### Step 1: 
 Clone this repo to your desktop and run npm.
 ```
@@ -132,5 +194,6 @@ npm start
 ```
 Visit url http://localhost:3000/.
 
+<br/>
 
 ## 7 Room for Improvement
