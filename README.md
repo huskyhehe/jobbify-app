@@ -2,7 +2,7 @@
 > Full-stack Job tracking app created with MERN stack.
 > <br/>**Live demo** here: https://jobbify-prod.herokuapp.com
 
-# <img src = "https://raw.githubusercontent.com/huskyhehe/jobbify-app/5675b256cd631ab3e69b93e664fae472e7de125d/client/src/assets/images/logo.svg">
+<img src = "./client/src/assets/images/logo.svg">
 
 ## Table of Contents
 * [1 General Intro](#1-general-intro)
