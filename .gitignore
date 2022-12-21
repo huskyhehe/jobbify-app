@@ -6,5 +6,5 @@ node_modules/
 # env
 .env
 
-# logo design
-design.xd
+# docs
+docs/
