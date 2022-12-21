@@ -1,6 +1,6 @@
 import User from "../models/User.js";
 import { StatusCodes } from "http-status-codes";
-import { BadRequestError } from "../errors/index.js";
+import { BadRequestError, UnauthenticatedError } from "../errors/index.js";
 
 export const register = async (req, res) => {
     const { name, email, password } = req.body;
@@ -36,12 +36,12 @@ export const login = async (req, res) => {
     // check whether user exists
     const user = await User.findOne({ email }).select('+password');
     if (!user) {
-        throw new UnAuthenticatedError('Invalid Credentials')
+        throw new UnauthenticatedError('Invalid Credentials')
     };
     // check whether password is correct
     const isPasswordCorrect = await user.comparePassword(password);
     if (!isPasswordCorrect) {
-        throw new UnAuthenticatedError('Invalid Credentials')
+        throw new UnauthenticatedError('Invalid Credentials')
     };
 
     const token = user.createJWT();
