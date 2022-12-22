@@ -4,8 +4,7 @@ import FormRow from "./FormRow";
 import FormRowSelect from "./FormRowSelect";
 import Wrapper from "../assets/styles/ContainerSearch";
 
-function SearchContainer() {
-    const [localSearch, setLocalSearch] = useState('');
+function SearchContainer() {   
     const {
         isLoading,
         search,
@@ -18,6 +17,7 @@ function SearchContainer() {
         jobTypeOptions,
         statusOptions,
     } = useAppContext();
+    const [localSearch, setLocalSearch] = useState('');
 
 
     const handleSearch = (e) => {
@@ -53,8 +53,9 @@ function SearchContainer() {
                     <FormRow
                         type='text'
                         name='search'
-                        value={search}
-                        handleChange={handleSearch}
+                        labelText='title'
+                        value={localSearch}
+                        handleChange={optimizedDebounce}
                     />
 
                     {/* search by status */}
