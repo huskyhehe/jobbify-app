@@ -14,7 +14,6 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route
-                    // path='/dashboard/'
                     path='/'
                     element={
                         <ProtectedRoute>
