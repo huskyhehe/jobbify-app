@@ -9,6 +9,8 @@ import {
     UPDATE_USER_BEGIN,
     UPDATE_USER_SUCCESS,
     UPDATE_USER_ERROR,
+    GET_CURRENT_USER_BEGIN,
+    GET_CURRENT_USER_SUCCESS,
     HANDLE_CHANGE,
     TOGGLE_SIDEBAR,
     CLEAR_VALUES,
@@ -56,7 +58,6 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 isLoading: false,
-                token: action.payload.token,
                 user: action.payload.user,
                 userLocation: action.payload.location,
                 jobLocation: action.payload.location,
@@ -77,10 +78,8 @@ const reducer = (state, action) => {
         case LOGOUT_USER:
             return {
                 ...initialState,
+                userLoading: false,
                 user: null,
-                token: null,
-                jobLocation: '',
-                userLocation: ''  
             };
         
 
@@ -94,7 +93,6 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 isLoading: false,
-                token: action.payload.token,
                 user: action.payload.user,
                 userLocation: action.payload.location,
                 jobLocation: action.payload.location,
@@ -250,6 +248,22 @@ const reducer = (state, action) => {
             return {
                 ...state, 
                 page: action.payload.page
+            };
+
+        case GET_CURRENT_USER_BEGIN:
+            return {
+                ...state, 
+                userLoading: true, 
+                showAlert: false
+            };
+
+        case GET_CURRENT_USER_SUCCESS:
+            return {
+                ...state,
+                userLoading: false,
+                user: action.payload.user,
+                userLocation: action.payload.location,
+                jobLocation: action.payload.location,
             };
 
         default:
