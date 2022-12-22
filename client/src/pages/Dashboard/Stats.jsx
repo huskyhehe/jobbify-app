@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import ChartsContainer from "../../components/ChartsContainer";
 import StatsContainer from "../../components/StatsContainer";
 import { useAppContext } from "../../context/appContext";
+import Loading from "../../components/Loading";
 
 function Stats() {
 
@@ -13,7 +14,7 @@ function Stats() {
     }, []);
 
     if (isLoading) {
-        return <div className='loading loading-center'></div>
+        return <Loading center />
     };
       
     return ( 
