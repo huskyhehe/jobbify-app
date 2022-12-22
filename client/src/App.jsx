@@ -3,18 +3,19 @@ import Landing from './pages/Landing';
 import Error from './pages/Error';
 import Register from './pages/Register';
 import ProtectedRoute from './pages/ProtectedRoute';
-import SharedLayout from './pages/Dashboard/SharedLayout';
-import AddJob from './pages/Dashboard/AddJob';
-import AllJobs from './pages/Dashboard/AllJobs';
-import Profile from './pages/Dashboard/Profile';
-import Stats from './pages/Dashboard/Stats';
+import SharedLayout from './pages/dashboard/SharedLayout';
+import AddJob from './pages/dashboard/AddJob';
+import AllJobs from './pages/dashboard/AllJobs';
+import Profile from './pages/dashboard/Profile';
+import Stats from './pages/dashboard/Stats';
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route
-                    path='/dashboard/'
+                    // path='/dashboard/'
+                    path='/'
                     element={
                         <ProtectedRoute>
                             <SharedLayout />
@@ -27,7 +28,7 @@ function App() {
                     <Route path='profile' element={<Profile />} />
                 </Route>
                 <Route path='/register' element={<Register />} />
-                <Route path='/' element={<Landing />} />
+                <Route path='/landing' element={<Landing />} />
                 <Route path='*' element={<Error />} />
             </Routes>
         </BrowserRouter>
