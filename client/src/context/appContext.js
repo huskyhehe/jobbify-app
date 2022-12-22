@@ -96,21 +96,8 @@ const AppProvider = ({ children }) => {
             dispatch({
                 type: CLEAR_ALERT,
             })
-        }, 3000)
+        }, 3000);
     };
-
-
-    // const addUserToLocalStorage = ({ user, token, location }) => {
-    //     localStorage.setItem('user', JSON.stringify(user));
-    //     localStorage.setItem('token', token);
-    //     localStorage.setItem('location', location);
-    // };
-      
-    // const removeUserFromLocalStorage = () => {
-    //     localStorage.removeItem('token');
-    //     localStorage.removeItem('user');
-    //     localStorage.removeItem('location');
-    // };
 
 
     const setupUser = async ({ currentUser, endPoint, alertText }) => {
