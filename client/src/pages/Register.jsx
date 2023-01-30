@@ -28,7 +28,7 @@ function Register() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const { name, email, password, isMember } = values
+        const { name, email, password, isMember } = values;
         if (!email || !password || (!isMember && !name)) {
             displayAlert();
             return;
@@ -52,7 +52,7 @@ function Register() {
     useEffect(() => {
         if (user) {
             setTimeout(() => {
-                navigate('/dashboard');
+                navigate('/');
             }, 3000);
         }
     }, [user, navigate]);

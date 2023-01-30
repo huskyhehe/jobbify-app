@@ -12,6 +12,9 @@ import morgan from "morgan";
 // cors
 import cors from "cors";
 
+// cookie
+import cookieParser from "cookie-parser";
+
 // db
 import connectDb from "./db/conn.js";
 
@@ -35,6 +38,7 @@ import mongoSanitize from 'express-mongo-sanitize';
 
 const app = express();
 
+app.use(cookieParser());
 app.use(helmet());
 app.use(xss());
 app.use(mongoSanitize());
