@@ -6,7 +6,7 @@ function ProtectedRoute({ children }) {
     const { user, userLoading } = useAppContext();
     if (userLoading) return <Loading />;
     if (!user) {       
-        return <Navigate to='/register' />
+        return <Navigate to='/landing' />
     }
     return children;
 }
