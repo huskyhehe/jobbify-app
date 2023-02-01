@@ -14,7 +14,7 @@ function Stats() {
     }, []);
 
     if (isLoading) {
-        return <Loading center />
+        return <Loading dashboard />
     };
       
     return ( 

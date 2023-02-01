@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Job from "./Job";
+import Loading from "./Loading";
 import { useAppContext } from "../context/appContext";
 import PageBtnContainer from "./PageBtnContainer";
 import Wrapper from "../assets/styles/JobsContainer";
@@ -25,7 +26,7 @@ function JobsContainer() {
       }, [page, search, searchStatus, searchType, sort]);
 
     if (isLoading) {
-        return <div className='loading loading-center'></div>
+        return <Loading dashboard />
     };
 
     if (jobs.length === 0) {

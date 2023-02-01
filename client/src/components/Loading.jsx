@@ -1,5 +1,5 @@
-function Loading({ center }) {
-    return <div className={center ? 'loading loading-center' : 'loading'}></div>
+function Loading({ dashboard }) {
+    return <div className={dashboard ? 'loading loading-dashboard' : 'loading'}></div>
 }
   
   export default Loading;
