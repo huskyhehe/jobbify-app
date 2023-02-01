@@ -1,13 +1,17 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Landing from './pages/Landing';
-import Error from './pages/Error';
-import Register from './pages/Register';
-import ProtectedRoute from './pages/ProtectedRoute';
-import SharedLayout from './pages/dashboard/SharedLayout';
-import AddJob from './pages/dashboard/AddJob';
-import AllJobs from './pages/dashboard/AllJobs';
-import Profile from './pages/dashboard/Profile';
-import Stats from './pages/dashboard/Stats';
+import { 
+    Register, 
+    Landing, 
+    Error, 
+    ProtectedRoute 
+} from './pages';
+import {
+    AllJobs,
+    Profile,
+    SharedLayout,
+    Stats,
+    AddJob,
+} from './pages/dashboard';
 
 function App() {
     return (
