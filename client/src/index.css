@@ -294,10 +294,11 @@ ul {
     border-radius: 50%;
     border-top-color: var(--primary-500);
     animation: spinner 2s linear infinite;
+    margin: 40vh auto;
 }
 
-.loading-center {
-    margin: 0 auto;
+.loading-dashboard {
+    margin: 20vh auto;
 }
 
 /* title */
